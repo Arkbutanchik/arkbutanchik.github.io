@@ -37,7 +37,7 @@ function ChangeDate() {
   if (secondsDifference.length == 1){
     secondsDifference = "0"+secondsDifference;
   }
-  document.getElementById("date").innerHTML = `До Оренбурга: ${diffDays} ${days}
+  document.getElementById("date").innerHTML = `До Оренбурга: ${diffDays} ${days} дней
   ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
 }
 
