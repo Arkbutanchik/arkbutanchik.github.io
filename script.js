@@ -5,7 +5,7 @@ function ChangeDate() {
 
 
   // Set the target date
-  var targetDate = new Date('2024-04-06T17:08:00');
+  var targetDate = new Date('2024-04-03T17:08:00');
 
   // Get the current date
   var currentDate = new Date();
@@ -22,7 +22,7 @@ function ChangeDate() {
   if (diffDays%10 == 2 || diffDays%10 == 3 || diffDays%10 == 4){
     days=" дня ";
   }
-  if (diffDays%10 == 1){
+  if (diffDays%10 == 0 || diffDays%10 == 5 || diffDays%10 == 6 || diffDays%10 == 7 || diffDays%10 == 8 || diffDays%10 == 9){
     days=" дней ";
   }
 
@@ -37,8 +37,12 @@ function ChangeDate() {
   if (secondsDifference.length == 1){
     secondsDifference = "0"+secondsDifference;
   }
-  document.getElementById("date").innerHTML = `До Оренбурга: ${diffDays} ${days} дней
-  ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
+  if (diffDays === 0){
+    document.getElementById("date").innerHTML = `ДО ОРЕНБУРГА: ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
+  }
+  else{
+    document.getElementById("date").innerHTML = `До Оренбурга: ${diffDays} ${days} ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
+  }
 }
 
 function setRandomGradientBackground() {
