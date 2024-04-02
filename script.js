@@ -58,5 +58,5 @@ function setRandomGradientBackground() {
   document.body.style.background = 'linear-gradient(to right, ' + color1 + ', ' + color2 + ')';
 }
 ChangeDate();
-setInterval(ChangeDate, 1000);
+setInterval(ChangeDate, 10);
 setRandomGradientBackground();
