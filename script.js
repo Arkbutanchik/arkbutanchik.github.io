@@ -1,7 +1,7 @@
 function ChangeDate() {
   let date1 = new Date();
-  let date2 = new Date('4/5/2024');
-  let diffDays = Math.ceil(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24)); 
+  let date2 = new Date('4/6/2024');
+  let diffDays = Math.ceil(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24)) - 1; 
 
 
   // Set the target date
