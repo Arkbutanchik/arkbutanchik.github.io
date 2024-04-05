@@ -1,48 +1,28 @@
+const targetTime = new Date(2024, 3, 6, 17, 8, 0);
+
 function ChangeDate() {
-  let date1 = new Date();
-  let date2 = new Date('4/6/2024');
-  let diffDays = Math.ceil(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24)) - 1; 
-
-
-  // Set the target date
-  var targetDate = new Date('2024-04-05T17:08:00');
-
-  // Get the current date
-  var currentDate = new Date();
-
-  // Calculate the difference in hours
-  var hoursDifference = (Math.floor(Math.abs(targetDate - currentDate) / 36e5)%24).toString();
-  var minutesDifference = (Math.floor(Math.abs(targetDate - currentDate) / 60000)%60).toString();
-  var secondsDifference = (Math.floor(Math.abs(targetDate - currentDate) / 1000)%60).toString();
-
-  var days = "";
-  if (diffDays%10 == 1){
-    days=" день ";
+  var currentTime = new Date();
+  
+  var diffInMilliseconds = targetTime - currentTime;
+  
+  var diffInSeconds = Math.floor(diffInMilliseconds / 1000);
+  var diffInMinutes = Math.floor(diffInSeconds / 60);
+  var diffInHours = Math.floor(diffInMinutes / 60);
+  
+  var remainingSeconds = (diffInSeconds % 60).toString();
+  var remainingMinutes = (diffInMinutes % 60).toString();
+  var remainingHours = (diffInHours % 24).toString();
+  
+  if (remainingHours.length == 1){
+    remainingHours = "0"+remainingHours;
   }
-  if (diffDays%10 == 2 || diffDays%10 == 3 || diffDays%10 == 4){
-    days=" дня ";
+  if (remainingMinutes.length == 1){
+    remainingMinutes = "0"+remainingMinutes;
   }
-  if (diffDays%10 == 0 || diffDays%10 == 5 || diffDays%10 == 6 || diffDays%10 == 7 || diffDays%10 == 8 || diffDays%10 == 9){
-    days=" дней ";
+  if (remainingSeconds.length == 1){
+    remainingSeconds = "0"+remainingSeconds;
   }
-
-  console.log(secondsDifference);
-
-  if (hoursDifference.length == 1){
-    hoursDifference = "0"+hoursDifference;
-  }
-  if (minutesDifference.length == 1){
-    minutesDifference = "0"+minutesDifference;
-  }
-  if (secondsDifference.length == 1){
-    secondsDifference = "0"+secondsDifference;
-  }
-  if (diffDays === 0){
-    document.getElementById("date").innerHTML = `ДО ОРЕНБУРГА: ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
-  }
-  else{
-    document.getElementById("date").innerHTML = `До Оренбурга: ${diffDays} ${days} ${hoursDifference}:${minutesDifference}:${secondsDifference}`;
-  }
+  document.getElementById("date").innerHTML = `ДО ОРЕНБУРГА: ${remainingHours}:${remainingMinutes}:${remainingSeconds}`;
 }
 
 function setRandomGradientBackground() {
@@ -57,6 +37,9 @@ function setRandomGradientBackground() {
   var color2 = 'hsl(' + h + ', ' + s + '%, ' + l + '%)';
   document.body.style.background = 'linear-gradient(to right, ' + color1 + ', ' + color2 + ')';
 }
+
 ChangeDate();
 setInterval(ChangeDate, 10);
+
+
 setRandomGradientBackground();
