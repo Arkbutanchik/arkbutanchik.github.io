@@ -1,4 +1,4 @@
-const targetTime = new Date("March 17, 2025 00:00:00").getTime();
+const targetTime = new Date("April 4, 2025 08:22:00").getTime();
 
 function ChangeDate() {
   var currentTime = new Date().getTime();
